@@ -15,7 +15,17 @@ class Program
         Operacion op = Sumar;
         Console.WriteLine("Suma: " + op(5, 3));
 
-        op = Restar;
+        //op = Restar;
+
+        // aquí hacemos multicasting
+        op += Restar;
         Console.WriteLine("resta: " + op(5, 3));
+
+        // se ejecutan en el orden que se han añadido
+
+        foreach (Operacion metodo in op.GetInvocationList())
+        {
+            Console.WriteLine(metodo(5, 3));
+        }
     }
 }
